@@ -59,11 +59,6 @@ class DoctorController extends Controller
      * @param  User  $user
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(User $user)
-    {
-if($user==null) return response()->json('User not found ' , '404');
-return $user->with(['profileable'])->get();
-    }
 
     /**
      * Show the form for editing the specified resource.

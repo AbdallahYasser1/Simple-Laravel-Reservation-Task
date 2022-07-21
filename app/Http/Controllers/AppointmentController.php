@@ -52,7 +52,7 @@ class AppointmentController extends Controller
         return response()->json(["message"=>"The user is not a doctor"], 400);
         if(!$this->CheckDateandTime($request['date'],$request['start_time']))
             return    response()->json(["message"=>"Can not make an appointment in a past date"], 400);
-        if(!User::find(auth()->id)->hasRole('Patient'))
+        if(!User::find(auth()->id())->hasRole('Patient'))
             return response()->json(["message"=>"The user is not a patient with this identifier"], 400);
         $appointment=Appointment::create([
     'user_id'=>auth()->id(),
